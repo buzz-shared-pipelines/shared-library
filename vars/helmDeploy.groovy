@@ -1,4 +1,4 @@
-def call(String applicationName, String commitHash, String version) {
+def call(applicationName, commitHash, version) {
     def helmKubectlPodYaml = libraryResource 'podtemplates/helm-kubectl-pod.yaml'
     podTemplate(name: 'helm-kubectl', label: 'helmKubectl', yaml: helmKubectlPodYaml) {
         node(label) {
