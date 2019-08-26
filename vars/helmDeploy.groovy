@@ -1,6 +1,7 @@
 def call(applicationName, commitHash, version) {
     def helmKubectlPodYaml = libraryResource 'podtemplates/helm-kubectl-pod.yaml'
-    podTemplate(name: 'helm-kubectl', label: 'helmKubectl', yaml: helmKubectlPodYaml) {
+    def label = "helmKubectl"
+    podTemplate(name: 'helm-kubectl', label: label, yaml: helmKubectlPodYaml) {
         node(label) {
             container('helm-kubectl') {
                 checkout scm
